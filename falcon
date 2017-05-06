@@ -1,0 +1,29 @@
+AG5 on.
+wait 20.
+lock throttle to 1.
+stage.
+wait 3.
+stage.
+print "We have lift off of Falcon nine.".
+lock steering to heading(90,90).
+wait until altitude > 1000.
+set x to 90.
+until apoapsis > 75000 {
+    lock steering to heading(90, x).
+    set x to x-0.01.
+    wait 0.01.
+   lock steering to heading(90, x).
+   set x to x-0.01.
+   wait 0.01.
+}  
+lock steering to heading(90, 50).
+wait until Apoapsis > 75000.
+lock throttle to 0.
+stage.
+wait 3.
+stage.
+lock throttle to 1.
+print "Second stage igniton".
+wait until Apoapsis > 120000.
+lock throttle to 0.
+run orbirtinsert.
